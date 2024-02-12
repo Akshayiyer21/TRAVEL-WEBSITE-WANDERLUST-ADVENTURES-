@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Landing Page with Background Video Slider | Travel</title>
+    <link rel="icon" href="favicon-32x32.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <a href="#" class="brand">Wanderlust Adventures</a>
+        <div class="menu-btn"></div>
+        <div class="navigation">
+            <div class="navigation-items">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Explore</a>
+                <a href="#">Gallery</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="home">
+        <video class="video-slide active" src="videos/1.mp4" autoplay muted loop></video>
+        <video class="video-slide " src="videos/2.mp4" autoplay muted loop></video>
+        <video class="video-slide " src="videos/3.mp4" autoplay muted loop></video>
+        <video class="video-slide " src="videos/4.mp4" autoplay muted loop></video>
+        <video class="video-slide" src="videos/5.mp4" autoplay muted loop></video>
+        <div class="content active">
+            <h1>Explore the Stunning Andaman and Nicobar Islands</h1>
+            <p>Escape to the tropical paradise of the Andaman and Nicobar Islands, where crystal-clear waters meet pristine beaches. Dive into the mesmerizing underwater world, home to vibrant coral reefs and exotic marine life. Discover secluded coves, lush mangrove forests, and breathtaking viewpoints offering panoramic vistas of the turquoise sea. Immerse yourself in the rich cultural heritage of the indigenous tribes and savor delicious seafood cuisine. Whether you seek adventure, relaxation, or cultural immersion, the Andaman and Nicobar Islands offer an unforgettable escape.</p>
+            <a href="#">Read More</a>
+        </div>
+        
+        <div class="content">
+            <h1>Discover the Enchanting Jungles of the Amazon</h1>
+            <p>Embark on an unforgettable journey deep into the heart of the Amazon rainforest, the world's largest tropical rainforest. Explore the lush green canopy teeming with diverse flora and fauna, including rare species of birds, mammals, and reptiles. Experience the thrill of spotting elusive wildlife, such as jaguars, monkeys, and colorful macaws, as you navigate through winding rivers and dense foliage. Learn about indigenous cultures and their sustainable way of life, and immerse yourself in the breathtaking beauty of this biodiverse ecosystem.</p>
+            <a href="#">Read More</a>
+        </div>
+        
+        <div class="content">
+            <h1>Experience the Thrill of Camping in the Jungle</h1>
+            <p>Embark on an exhilarating adventure deep into the heart of the jungle, where towering trees and lush vegetation surround you. Set up camp under the starlit sky and immerse yourself in the sights and sounds of nature. Explore hidden trails, discover hidden waterfalls, and encounter exotic wildlife as you trek through the dense foliage. Unplug from the hustle and bustle of modern life and reconnect with the natural world on an unforgettable jungle camping experience.</p>
+            <a href="#">Read More</a>
+        </div>
+        
+        <div class="content">
+            <h1>Unwind in the Serene Khao Sok National Park</h1>
+            <p>Discover the tranquil beauty of Khao Sok National Park, a hidden gem nestled in the heart of southern Thailand. Explore ancient rainforests, towering limestone cliffs, and pristine freshwater lakes as you journey through this untouched wilderness. Encounter a diverse array of wildlife, including elephants, gibbons, and exotic birds, as you embark on guided jungle treks and boat tours. Relax in rustic accommodations surrounded by nature and soak in the serenity of this enchanting natural paradise.</p>
+            <a href="#">Read More</a>
+        </div>
+        
+        <div class="content">
+            <h1>Embark on an Adventurous Desert Safari in Dubai</h1>
+            <p>Experience the thrill of a lifetime with a desert safari in the golden sands of Dubai. Climb aboard a rugged 4x4 vehicle and conquer towering sand dunes as you embark on an exhilarating dune bashing adventure. Witness a mesmerizing desert sunset and capture breathtaking views of the vast desert landscape. Discover traditional Bedouin culture with camel rides, falconry displays, and Arabic entertainment under the starlit sky. Indulge in a sumptuous Arabian feast and experience the magic of the desert in this unforgettable adventure.</p>
+            <a href="#">Read More</a>
+        </div>
+        <div class="media-icons">
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+        </div>
+        <div class="slider-navigation">
+            <div class="nav-btn active"></div>
+            <div class="nav-btn"></div>
+            <div class="nav-btn"></div>
+            <div class="nav-btn"></div>
+            <div class="nav-btn"></div>
+        </div>
+    </section>
+    
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+            const menuBtn = document.querySelector(".menu-btn");
+            const navigation = document.querySelector(".navigation");
+    
+            menuBtn.addEventListener("click", () => {
+                menuBtn.classList.toggle("active");
+                navigation.classList.toggle("active");
+            });
+    
+            // JavaScript for video slider navigation
+            const btns = document.querySelectorAll(".nav-btn");
+            const slides = document.querySelectorAll(".video-slide");
+            const contents = document.querySelectorAll(".content");
+    
+            var sliderNav = function(manual) {
+                btns.forEach((btn, index) => {
+                    if (index === manual) {
+                        btn.classList.add("active");
+                    } else {
+                        btn.classList.remove("active");
+                    }
+                });
+    
+                slides.forEach((slide, index) => {
+                    if (index === manual) {
+                        slide.classList.add("active");
+                    } else {
+                        slide.classList.remove("active");
+                    }
+                });
+    
+                contents.forEach((content, index) => {
+                    if (index === manual) {
+                        content.classList.add("active");
+                    } else {
+                        content.classList.remove("active");
+                    }
+                });
+            };
+    
+            btns.forEach((btn, i) => {
+                btn.addEventListener("click", () => {
+                    sliderNav(i);
+                });
+            });
+
+            const readMoreLinks = document.querySelectorAll('.content a[href="#"]');
+            readMoreLinks.forEach(link => {
+                link.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    const content = this.parentElement;
+                    content.classList.toggle("expanded");
+                });
+            });
+        });
+    </script>
+</body>
+</html>
